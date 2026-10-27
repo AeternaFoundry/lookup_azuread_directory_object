@@ -3,10 +3,16 @@ variable "directory_object_lookup" {
 Map of directory_object_lookup, attributes below
 Required:
     - object_id
+Optional:
+    - timeouts (block):
+        - read (optional)
 EOT
 
   type = map(object({
     object_id = string
+    timeouts = optional(object({
+      read = optional(string)
+    }))
   }))
   validation {
     condition = alltrue([
